@@ -16,8 +16,10 @@ public class ServerStartFormController {
     @FXML
     void btnServerStartOnAction(ActionEvent event) throws IOException {
         startServer();
+
         Stage stage = (Stage) startServerPane.getScene().getWindow();
         stage.close();
+
         Stage stage2 = new Stage();
         stage2.setScene(new Scene(FXMLLoader.load(getClass().getResource("/view/ClientLoginForm.fxml"))));
         stage2.setTitle("Live Chat Login");
@@ -25,8 +27,9 @@ public class ServerStartFormController {
         Notifications notification = NotificationController.notification("Server up & running", "Server Alert");
         notification.show();
     }
+
     private void startServer() throws IOException {
-        Runnable server = Server.getServerSocket();
+        Runnable server = Server.getServerSocket(); //dependency injection (Runnable interface)
         Thread thread = new Thread(server);
         thread.start();
     }

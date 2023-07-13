@@ -12,6 +12,7 @@ import java.io.IOException;
 import java.net.Socket;
 
 public class Client implements Runnable{
+    //Serailizale --> To save object in to hard disk
     private final String name;
     private final Socket socket;
     private final DataInputStream inputStream;
@@ -19,11 +20,9 @@ public class Client implements Runnable{
     private ClientChatFormController clientChatFormController;
     public Client(String name) throws IOException {
         this.name = name;
-
         socket = new Socket("localhost", 3000);
         inputStream = new DataInputStream(socket.getInputStream());
         outputStream = new DataOutputStream(socket.getOutputStream());
-
         outputStream.writeUTF(name);
         outputStream.flush();
         try {
@@ -32,13 +31,26 @@ public class Client implements Runnable{
             throw new RuntimeException(e);
         }
     }
+
+    @Override
+    protected void finalize() throws Throwable {
+        Thread.interrupted(); // To terminate the thread, interrupt it
+        inputStream.close();
+        outputStream.close();
+        socket.close();
+    }
+
     @Override
     public void run() {
         String message = "";
         while (!message.equals("exit")) {
             try {
                 message = inputStream.readUTF();
-
+                if (message.equals("*image*")) {
+                    receiveImage();
+                } else {
+                    clientChatFormController.writeMessage(message);
+                }
 
             } catch (IOException e) {
                 try {
@@ -79,9 +91,12 @@ public class Client implements Runnable{
             }
         });
     }
+
     public String getName() {
+
         return name;
     }
+
     private void receiveImage() throws IOException {
         String utf = inputStream.readUTF();
         int size = inputStream.readInt();

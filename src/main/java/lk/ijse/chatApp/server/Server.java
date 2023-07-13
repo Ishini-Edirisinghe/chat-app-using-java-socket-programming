@@ -11,10 +11,9 @@ public class Server implements Runnable{
     private static Server server;
     private final ServerSocket serverSocket;
 
-
     private Server() throws IOException {
         final int PORT=3000; //Port --> 3000
-        serverSocket = new ServerSocket(PORT);
+        serverSocket = new ServerSocket(PORT); //Wait for the client requests (To get connections)
         System.out.println("Server up & running on port : "+PORT);
     }
 
@@ -26,7 +25,7 @@ public class Server implements Runnable{
         while (!serverSocket.isClosed()) {
             System.out.println("listening.......");
             try {
-                Socket socket = serverSocket.accept();
+                Socket socket = serverSocket.accept(); //wait for request (Accept request of client (Listening)
                 ClientHandler clientHandler = new ClientHandler(socket);
                 Thread thread = new Thread(clientHandler);
                 thread.start();
