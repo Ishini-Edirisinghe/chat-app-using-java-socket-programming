@@ -3,16 +3,74 @@
 <?import com.jfoenix.controls.JFXButton?>
 <?import com.jfoenix.controls.JFXTextField?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.Separator?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.chatApp.controller.ClientChatFormController">
+<AnchorPane prefHeight="659.0" prefWidth="436.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.chatApp.controller.ClientChatFormController">
     <children>
-        <JFXTextField labelFloat="true" layoutX="47.0" layoutY="332.0" prefHeight="25.0" prefWidth="368.0" promptText="message here" />
-        <Separator layoutX="38.0" layoutY="321.0" prefHeight="2.0" prefWidth="509.0" />
-        <JFXButton layoutX="447.0" layoutY="332.0" prefHeight="25.0" prefWidth="99.0" text="Send" textFill="#f80000" />
-        <Label layoutX="252.0" layoutY="26.0" text="Label" />
-        <VBox fx:id="vbox" layoutX="36.0" layoutY="53.0" prefHeight="200.0" prefWidth="433.0" />
+        <JFXTextField fx:id="txtMsg" labelFloat="true" layoutX="29.0" layoutY="625.0" prefHeight="25.0" prefWidth="336.0" promptText="message here" />
+        <Separator layoutX="15.0" layoutY="614.0" prefHeight="5.0" prefWidth="421.0" />
+        <JFXButton layoutX="365.0" layoutY="626.0" onAction="#btnSendOnAction" prefHeight="25.0" prefWidth="62.0" text="Send" textFill="#f80000" />
+        <Label fx:id="lblClientName" layoutX="22.0" layoutY="13.0" prefHeight="34.0" prefWidth="210.0" text="Label">
+            <font>
+                <Font size="28.0" />
+            </font></Label>
+        <JFXButton layoutX="289.0" layoutY="622.0" onAction="#attachImageOnAction" prefHeight="34.0" prefWidth="36.0" text=".">
+            <graphic>
+                <ImageView fitHeight="26.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@../img/camera.png" />
+                    </image>
+                </ImageView>
+            </graphic>
+            <font>
+                <Font size="1.0" />
+            </font>
+        </JFXButton>
+        <ScrollPane layoutX="23.0" layoutY="68.0" prefHeight="525.0" prefWidth="404.0">
+            <content>
+                <VBox fx:id="vbox" prefHeight="517.0" prefWidth="397.0" />
+            </content>
+        </ScrollPane>
+        <JFXButton layoutX="329.0" layoutY="625.0" onAction="#loadEmojiOnAction" prefHeight="25.0" prefWidth="36.0" text=".">
+            <font>
+                <Font size="1.0" />
+            </font>
+            <graphic>
+                <ImageView fitHeight="21.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@../img/emoji.png" />
+                    </image>
+                </ImageView>
+            </graphic>
+        </JFXButton>
+        <AnchorPane fx:id="emojiAnchorPane" layoutX="36.0" layoutY="449.0" prefHeight="175.0" prefWidth="400.0">
+            <children>
+                <GridPane fx:id="emojiGridpane">
+                    <columnConstraints>
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="107.0" minWidth="10.0" prefWidth="97.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="103.0" minWidth="10.0" prefWidth="103.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                    </columnConstraints>
+                    <rowConstraints>
+                        <RowConstraints maxHeight="36.0" minHeight="10.0" prefHeight="28.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="49.0" minHeight="10.0" prefHeight="32.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                    </rowConstraints>
+                </GridPane>
+            </children>
+        </AnchorPane>
+        <VBox fx:id="vBoxClientImage" layoutX="258.0" layoutY="4.0" prefHeight="53.0" prefWidth="49.0" />
     </children>
 </AnchorPane>

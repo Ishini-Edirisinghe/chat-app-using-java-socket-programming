@@ -24,4 +24,7 @@ public class ClientLoginFormController {
         thread.start();
         txtName.clear();
     }
+
+    public void btnAddClientImageOnAction(ActionEvent actionEvent) {
+    }
 }
