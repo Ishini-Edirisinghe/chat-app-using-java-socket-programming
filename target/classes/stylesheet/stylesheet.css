@@ -1,0 +1,55 @@
+.clientNameLabel{
+    -fx-text-fill: #273c75;
+    -fx-font-size: 20px;
+    -fx-font-weight: bold;
+}
+.heyLabel{
+    -fx-text-fill: #4834d4;
+    -fx-font-size: 20px;
+    -fx-font-weight: bold;
+}
+.clientChatScrollPane{
+ /*   -fx-background-color: #747d8c;*/
+    -fx-background-color: transparent;
+}
+.btnStartServer{
+    -fx-background-color:  #30336b;
+    -fx-background-radius: 10;
+    -fx-min-width: 90px;
+    -fx-min-height: 10px;
+    -fx-max-width: 180px;
+    -fx-max-height: 400px;
+    -fx-font-weight: bold;
+    -fx-font-size: 25px;
+    -fx-text-fill: white;
+}
+
+.btnSend{
+    -fx-background-color:  transparent;
+    -fx-background-radius: 10;
+    -fx-min-width: 50px;
+    -fx-min-height: 10px;
+    -fx-max-width: 150px;
+    -fx-max-height: 400px;
+    -fx-font-weight: bold;
+    -fx-font-size: 1px;
+    -fx-text-fill: white;
+}
+
+.btnLogin{
+    -fx-background-color:  #12CBC4;
+    -fx-background-radius: 10;
+    -fx-min-width: 50px;
+    -fx-min-height: 10px;
+    -fx-max-width: 180px;
+    -fx-max-height: 400px;
+    -fx-font-weight: bold;
+    -fx-font-size: 20px;
+    -fx-text-fill: white;
+}
+
+.liveChatLoginLabel{
+    -fx-text-fill: #4834d4;
+    -fx-font-size: 24px;
+    -fx-font-weight: bold;
+}

@@ -13,6 +13,7 @@ public class ClientHandler implements Runnable{
     private final DataInputStream inputStream; //Read data from source
     private final DataOutputStream outputStream; //Write data to destination
     private final String clientName;
+
     public ClientHandler(Socket socket) throws IOException {
         this.socket = socket;
         inputStream = new DataInputStream(socket.getInputStream());
@@ -25,6 +26,8 @@ public class ClientHandler implements Runnable{
         outputStream.writeUTF(sender + ": " + msg); //write data
         outputStream.flush();
     }
+
+
     @Override
     public void run() {
         l1: while (socket.isConnected()) {
@@ -40,6 +43,7 @@ public class ClientHandler implements Runnable{
                     }
                 }
             } catch (IOException e) {
+
                 clientHandlerList.remove(this); //remove client
                 break;
             }
@@ -66,6 +70,9 @@ public class ClientHandler implements Runnable{
         outputStream.flush();
 //        System.out.println("Image Sent");
     }
+
+
+
 
 
 }
