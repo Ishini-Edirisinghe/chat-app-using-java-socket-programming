@@ -31,7 +31,6 @@ public class Client implements Runnable{
             throw new RuntimeException(e);
         }
     }
-
     @Override
     protected void finalize() throws Throwable {
         Thread.interrupted(); // To terminate the thread, interrupt it
@@ -39,7 +38,6 @@ public class Client implements Runnable{
         outputStream.close();
         socket.close();
     }
-
     @Override
     public void run() {
         String message = "";
@@ -51,7 +49,6 @@ public class Client implements Runnable{
                 } else {
                     clientChatFormController.writeMessage(message);
                 }
-
             } catch (IOException e) {
                 try {
                     socket.close();
@@ -80,9 +77,9 @@ public class Client implements Runnable{
         stage.setScene(new Scene(parent));
         stage.setTitle(name + "'s Chat");
         stage.show();
+
         stage.setOnCloseRequest(event -> {
             try {
-//                System.out.println(name + " closed");
                 inputStream.close();
                 outputStream.close();
                 socket.close();
@@ -91,12 +88,9 @@ public class Client implements Runnable{
             }
         });
     }
-
     public String getName() {
-
         return name;
     }
-
     private void receiveImage() throws IOException {
         String utf = inputStream.readUTF();
         int size = inputStream.readInt();
