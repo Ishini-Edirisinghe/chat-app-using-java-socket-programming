@@ -19,7 +19,6 @@ public class Client implements Runnable{
     private final DataInputStream inputStream;
     private final DataOutputStream outputStream;
     private ClientChatFormController clientChatFormController;
-    // private ClientLoginFormController clientLoginFormController;
 
     public Image image;
     public ClientLoginFormController clientLoginFormController;
